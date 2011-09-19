@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "GameObject" do
+describe UniversalConstant::GameObject do
   describe ".find" do
     it "gets an object with the given id" do
       5.times { UniversalConstant::GameObject.new }
