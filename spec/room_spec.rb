@@ -15,23 +15,6 @@ describe UniversalConstant::Room do
     end
   end
 
-  describe "#add_exit" do
-    before(:each) do
-      @start_room = UniversalConstant::Room.new(:name => 'The Study')
-      @new_room = UniversalConstant::Room.new(:name => 'The Hall')
-      @start_room.add_exit('out', @new_room)
-    end
-
-    it "adds a new exit to the starting @room" do
-      @start_room.exit?('out').should be_true
-      @start_room.exit('out').should === @new_room
-    end
-
-    it "doesn't add a connecting exit back from the new @room to the starting one" do
-      @new_room.exits.should be_empty
-    end
-  end
-
   describe "#exit?" do
     before(:each) do
       @room = UniversalConstant::Room.new
@@ -63,11 +46,69 @@ describe UniversalConstant::Room do
     end
   end
 
+  describe "#add_exit" do
+    context "with the first two arguments" do
+      before(:each) do
+        @start_room = UniversalConstant::Room.new(:name => 'The Study')
+        @new_room = UniversalConstant::Room.new(:name => 'The Hall')
+        @start_room.add_exit('out', @new_room)
+      end
+
+      it "adds a new exit to the starting @room" do
+        @start_room.exit?('out').should be_true
+        @start_room.exit('out').should === @new_room
+      end
+
+      it "doesn't add a connecting exit back from the new @room to the starting one" do
+        @new_room.exits.should be_empty
+      end
+    end
+
+    context "with the optional third argument" do
+      before(:each) do
+        @start_room = UniversalConstant::Room.new(:name => 'The Study')
+        @new_room = UniversalConstant::Room.new(:name => 'The Hall')
+        @start_room.add_exit('out', @new_room, :back => 'in')
+      end
+
+      it "adds a new exit to the starting @room" do
+        @start_room.exit?('out').should be_true
+        @start_room.exit('out').should === @new_room
+      end
+
+      it "doesn't add a connecting exit back from the new @room to the starting one" do
+        @new_room.exit?('in').should be_true
+        @new_room.exit('in').should === @start_room
+      end
+    end
+  end
+
   describe "#dig" do
+    context "with the first two arguments" do
+      before(:each) do
+        @start_room = UniversalConstant::Room.new(:name => 'The Yard')
+        @new_room = @start_room.dig('in', 'The House')
+      end
+
+      it "creates and returns a new Room named right" do
+        @new_room.should be_a(UniversalConstant::Room)
+        @new_room.name.should == 'The House'
+      end
+
+      it "opens an exit from the first @room to the new one" do
+        @start_room.exit?('in').should be_true
+        @start_room.exit('in').should === @new_room
+      end
+
+      it "opens an exit from the new @room to the first one" do
+        @new_room.exits.should be_empty
+      end
+    end
+
     context "with all three arguments" do
       before(:each) do
         @start_room = UniversalConstant::Room.new(:name => 'The Yard')
-        @new_room = @start_room.dig('in', 'The House', 'out')
+        @new_room = @start_room.dig('in', 'The House', :back => 'out')
       end
 
       it "creates and returns a new Room named right" do

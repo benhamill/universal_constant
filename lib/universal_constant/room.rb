@@ -8,8 +8,10 @@ module UniversalConstant
       super(args)
     end
 
-    def add_exit(name, target)
+    def add_exit(name, target, opts = {})
+      opts.symbolize_keys!
       @exits[name.to_s] = target
+      target.add_exit(opts[:back], self) if opts[:back]
     end
 
     def exit?(name)
@@ -20,10 +22,9 @@ module UniversalConstant
       @exits[name.to_s]
     end
 
-    def dig(from_here, target_name, from_target)
+    def dig(from_here, target_name, opts = {})
       target = Room.new(:name => target_name)
-      self.add_exit(from_here, target)
-      target.add_exit(from_target, self)
+      self.add_exit(from_here, target, opts)
 
       target
     end
