@@ -35,14 +35,14 @@ OUT
 
   describe "#ask" do
     it "displays a message and returns user input" do
-      subject.stub(:gets) { 'Nada mucho' }
+      subject.stub(:gets) { "Nada mucho\n" }
 
       subject.ask("What's up?").should == 'Nada mucho'
       output.should == "What's up?\n> "
     end
 
     it "just displays the prompt with no message" do
-      subject.stub(:gets) { 'look' }
+      subject.stub(:gets) { "look\n" }
 
       subject.ask.should == 'look'
       output.should == "> "
