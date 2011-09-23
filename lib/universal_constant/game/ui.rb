@@ -15,7 +15,7 @@ module UniversalConstant
 
       def ask(message = nil)
         say(message) if message
-        @output_stream.print('> ')
+        output_stream.print('> ')
         gets
       end
 
