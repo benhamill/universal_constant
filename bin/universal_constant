@@ -3,8 +3,8 @@ require './lib/universal_constant'
 
 start = UniversalConstant::Room.new(:name => 'Hangar Bay', :description => 'This room is almost as long as the entire ship and uninterrupted by walls. At even intervals, a safe margin wider than a Viper, triangular arches support the ceiling, making little alcoves along the two long walls. Some of these alcoves have a Viper each in them, most of them being or awaiting service from the flight deck crew. Equipment is everywhere in an ordered chaos, from fuel hoses and fire safety equipement to rolling toolboxes and ammunition crates.')
 
-mess = start.dig('Mess', 'Crew Mess', 'Down')
-lounge = mess.dig('Aft', 'Crew Lounge', 'Forward')
+mess = start.dig('Mess', 'Crew Mess', :back => 'Down')
+lounge = mess.dig('Aft', 'Crew Lounge', :back => 'Forward')
 lounge.add_exit('Down', start, :back => 'Lounge')
 
 mess.description = "There's lots of tables and whatever, here. You could get some food and have a good conversation, I guess."
