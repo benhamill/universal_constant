@@ -17,6 +17,7 @@ module UniversalConstant
 
     def start
       catch(:exit_game) do
+        $game = self
         @player.location = @starting_location
         response = Commands.look
 
