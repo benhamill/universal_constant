@@ -23,7 +23,7 @@ module UniversalConstant
 
         loop do
           say response.message
-          response = Commands.send(ask)
+          response = Commands.process_input(ask)
         end
       end
     end

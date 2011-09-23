@@ -1,3 +1,5 @@
+require 'ostruct'
+
 module UniversalConstant
   module Commands
     def self.process_input(input)
