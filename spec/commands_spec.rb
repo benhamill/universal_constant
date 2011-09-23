@@ -2,13 +2,13 @@ require 'spec_helper'
 
 describe UniversalConstant::Commands do
   describe "#look" do
-    it "returns an object with a message of the description of the player's current location" do
-      location = double(:description => 'It is very dark.')
-      UniversalConstant::Game.stub!(:player_location) { location }
+    it "returns a RoomPresenter" do
+      location = double(:description => 'It is very dark.', :name => 'Dank Hallway')
+      $game = double('Game', :player_location => location)
 
       result = subject.look
 
-      result.message.should == 'It is very dark.'
+      result.should be_a(UniversalConstant::RoomPresenter)
     end
   end
 

@@ -1,7 +1,7 @@
 module UniversalConstant
   module Commands
     def self.look(*args)
-      OpenStruct.new :message => Game.player_location.description
+      RoomPresenter.new($game.player_location)
     end
 
     def self.method_missing(method_name, *args, &block)
