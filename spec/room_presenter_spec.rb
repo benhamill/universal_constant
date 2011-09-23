@@ -23,6 +23,7 @@ MSG
         room = UniversalConstant::Room.new(:name => 'Amidships', :description => 'The sea spray is nice here.')
         room.add_exit('Aft', double('Room'))
         room.add_exit('Forward', double('Room'))
+        room.add_exit('Out the airlock', double('Room'))
 
         @presenter = UniversalConstant::RoomPresenter.new(room)
       end
@@ -32,7 +33,7 @@ MSG
 Amidships
 The sea spray is nice here.
 
-Exits are: Aft, Forward
+Exits are: Aft, Forward, Out the airlock
 MSG
       end
     end

@@ -12,7 +12,7 @@ MSG
     private
 
     def exit_list(exits)
-      exits.empty? ? "There are no exits here." : "Exits are: #{exits.keys.join(', ')}"
+      exits.empty? ? "There are no exits here." : "Exits are: #{exits.keys.collect(&:capitalize).join(', ')}"
     end
   end
 end

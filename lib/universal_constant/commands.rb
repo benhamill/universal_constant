@@ -24,6 +24,8 @@ module UniversalConstant
         :look => :look,
         :quit => :quit,
         :exit => :quit,
+        :go => :go,
+        :walk => :go,
       }
     end
 
@@ -33,6 +35,18 @@ module UniversalConstant
 
     def self.quit(*args)
       throw(:exit_game)
+    end
+
+    def self.go(*args)
+      exit_name = args.join(' ')
+      player_location = $game.player_location
+
+      if player_location.exit?(exit_name)
+        $game.move_player_to(player_location.exit(exit_name))
+        look
+      else
+        OpenStruct.new :message => "Go where? That's not an exit here."
+      end
     end
   end
 end

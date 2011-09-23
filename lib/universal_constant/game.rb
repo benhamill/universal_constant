@@ -15,6 +15,10 @@ module UniversalConstant
       @player.location
     end
 
+    def move_player_to(room)
+      @player.location = room
+    end
+
     def start
       catch(:exit_game) do
         $game = self

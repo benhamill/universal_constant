@@ -21,9 +21,19 @@ describe UniversalConstant::Game do
 
   describe "#player_location" do
     it "returns the player's current location" do
-      subject.player.location = :at_home
+      subject.player.location = :home
 
-      subject.player_location.should == :at_home
+      subject.player_location.should == :home
+    end
+  end
+
+  describe "#move_player_to" do
+    it "reassigns the player's location to the new object" do
+      subject.player.location = :home
+
+      subject.move_player_to(:work)
+
+      subject.player.location.should == :work
     end
   end
 end

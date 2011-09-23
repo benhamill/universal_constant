@@ -25,4 +25,39 @@ describe UniversalConstant::Commands do
       expect { subject.process_input('quit') }.to throw_symbol(:exit_game)
     end
   end
+
+  describe "go" do
+    before(:each) do
+      @top = UniversalConstant::Room.new(:description => 'Up high', :name => 'Top')
+      @bottom = @top.dig('Down', 'Bottom', :back => 'Up')
+      @bottom.description = 'Down low.'
+
+      $game = UniversalConstant::Game.new
+      $game.player.location = @top
+    end
+
+    context "when an exit name is given" do
+      before(:each) do
+        @result = subject.process_input('go down')
+      end
+
+      it "moves the player to the new room when an exit is named" do
+        $game.player_location.should === @bottom
+      end
+
+      it "performs look for the player" do
+        @result.message.should match(/^Bottom/)
+      end
+    end
+
+    context "when an exit name is NOT given" do
+      before(:each) do
+        @result = subject.process_input('go around')
+      end
+
+      it "asks for clarification" do
+        @result.message.should == "Go where? That's not an exit here."
+      end
+    end
+  end
 end

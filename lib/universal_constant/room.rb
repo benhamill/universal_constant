@@ -10,16 +10,16 @@ module UniversalConstant
 
     def add_exit(name, target, opts = {})
       opts.symbolize_keys!
-      @exits[name.to_s] = target
+      @exits[name.to_s.downcase] = target
       target.add_exit(opts[:back], self) if opts[:back]
     end
 
     def exit?(name)
-      @exits.has_key?(name.to_s)
+      @exits.has_key?(name.to_s.downcase)
     end
 
     def exit(name)
-      @exits[name.to_s]
+      @exits[name.to_s.downcase]
     end
 
     def dig(from_here, target_name, opts = {})

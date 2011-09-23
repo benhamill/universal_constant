@@ -28,6 +28,10 @@ describe UniversalConstant::Room do
     it "returns false if the @room doesn't have an exit named that" do
       @room.exit?('nope').should be_false
     end
+
+    it "doesn't care about case" do
+      @room.exit?('YES').should be_true
+    end
   end
 
   describe "#exit" do
@@ -43,6 +47,10 @@ describe UniversalConstant::Room do
 
     it "returns nil if there is no exit thusly named" do
       @room.exit('down').should be_nil
+    end
+
+    it "doesn't care about case" do
+      @room.exit('Up').should === @new_room
     end
   end
 
