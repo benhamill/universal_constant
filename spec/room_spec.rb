@@ -70,8 +70,9 @@ describe UniversalConstant::Room do
         @new_room = @start_room.dig('in', 'The House', 'out')
       end
 
-      it "creates and returns a new Room" do
+      it "creates and returns a new Room named right" do
         @new_room.should be_a(UniversalConstant::Room)
+        @new_room.name.should == 'The House'
       end
 
       it "opens an exit from the first @room to the new one" do
