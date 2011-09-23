@@ -1,11 +1,13 @@
 module UniversalConstant
   class Presenter
-    attr_accessor :message
-
     def format_output(output)
       output.lines.inject("") do |memo, line|
         memo << "#{wrap(line)}\n"
       end
+    end
+
+    def message
+      format_output(@message)
     end
 
     private
