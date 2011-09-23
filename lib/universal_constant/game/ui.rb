@@ -16,7 +16,7 @@ module UniversalConstant
       def self.ask(message = nil)
         say(message) if message
         @@output_stream.print('> ')
-        gets
+        gets.split(' ')
       end
 
       private

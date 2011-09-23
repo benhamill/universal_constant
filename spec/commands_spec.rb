@@ -11,4 +11,12 @@ describe UniversalConstant::Commands do
       result.message.should == 'It is very dark.'
     end
   end
+
+  describe "#method_missing" do
+    it "returns an object with an apology message for commands it doesn't know" do
+      result = subject.not_a_command
+
+      result.message.should == "I don't know the command not_a_command."
+    end
+  end
 end
