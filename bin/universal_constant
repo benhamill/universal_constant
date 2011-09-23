@@ -6,6 +6,10 @@ start = UniversalConstant::Room.new(:name => 'Hangar Bay', :description => 'This
 mess = start.dig('Mess', 'Crew Mess', 'Down')
 lounge = mess.dig('Aft', 'Crew Lounge', 'Forward')
 lounge.add_exit('Down', start, :back => 'Lounge')
+
+mess.description = "There's lots of tables and whatever, here. You could get some food and have a good conversation, I guess."
+lounge.description = "Coffee and relaxation between Combat Air Patrols. This is where pilots come to play a game of poker and blow off some steam."
+
 game = UniversalConstant::Game.new
 
 game.start
