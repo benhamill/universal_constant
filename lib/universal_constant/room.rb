@@ -8,12 +8,15 @@ class UniversalConstant::Room < UniversalConstant::GameObject
   end
 
   def add_exit(name, target)
+    @exits[name.to_s] = target
   end
 
   def exit?(name)
+    @exits.has_key?(name.to_s)
   end
 
   def exit(name)
+    @exits[name.to_s]
   end
 
   def dig(from_here, target, from_target)
