@@ -1,11 +1,16 @@
 require 'spec_helper'
 
+class UIHolder
+  include UniversalConstant::Game::UI
+end
+
 describe UniversalConstant::Game::UI do
+  subject { UIHolder.new }
   let(:output) { @output.string }
 
   before(:each) do
     @output = StringIO.new
-    subject.class_variable_set(:@@output_stream, @output)
+    subject.instance_variable_set(:@output_stream, @output)
   end
 
   describe "#say" do
