@@ -11,7 +11,7 @@ describe UniversalConstant::Commands do
 
   describe "look" do
     it "returns a RoomPresenter" do
-      location = double(:description => 'It is very dark.', :name => 'Dank Hallway')
+      location = UniversalConstant::Room.new(:description => 'It is very dark.', :name => 'Dank Hallway')
       $game = double('Game', :player_location => location)
 
       result = subject.process_input('look')

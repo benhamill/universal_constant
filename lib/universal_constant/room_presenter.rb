@@ -1,17 +1,11 @@
 module UniversalConstant
-  class RoomPresenter
-    attr_accessor :message
-
+  class RoomPresenter < Presenter
     def initialize(room)
-      @room = room
-    end
+      @message = <<-MSG
+#{room.name}
+#{room.description}
 
-    def message
-      <<-MSG
-#{@room.name}
-#{@room.description}
-
-#{exit_list(@room.exits)}
+#{exit_list(room.exits)}
 MSG
     end
 

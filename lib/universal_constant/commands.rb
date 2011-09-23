@@ -23,6 +23,7 @@ module UniversalConstant
       {
         :look => :look,
         :quit => :quit,
+        :exit => :quit,
       }
     end
 
