@@ -1,8 +1,6 @@
 module UniversalConstant
   class Game
     module UI
-      @output_stream = $stdout
-
       def say(stuff)
         output_stream.puts(stuff.to_s)
       end
@@ -22,7 +20,7 @@ module UniversalConstant
       private
 
       def output_stream
-        @output_stream
+        @output_stream ||= $stdout
       end
     end
   end
