@@ -135,4 +135,14 @@ describe UniversalConstant::Room do
       end
     end
   end
+
+  describe "#serialize" do
+    it "creates a new serializer and calls serialize on it" do
+      serializer = double('RoomSerializer')
+      UniversalConstant::RoomSerializer.should_receive('new').with(subject) { serializer }
+      serializer.should_receive('serialize')
+
+      subject.serialize
+    end
+  end
 end

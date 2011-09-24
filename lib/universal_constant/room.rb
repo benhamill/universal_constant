@@ -28,5 +28,9 @@ module UniversalConstant
 
       target
     end
+
+    def serialize
+      RoomSerializer.new(self).serialize
+    end
   end
 end
