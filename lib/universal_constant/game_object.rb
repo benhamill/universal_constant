@@ -7,6 +7,10 @@ class UniversalConstant::GameObject
     @@ids[id.to_i]
   end
 
+  def self.each(&block)
+    @@ids.each(&block)
+  end
+
   def initialize(attrs = {})
     @id = UniversalConstant::GameObject.assign_id(self)
 

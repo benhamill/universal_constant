@@ -29,4 +29,18 @@ describe UniversalConstant::GameObject do
       go.instance_variable_get(:@class).should == 'awesome'
     end
   end
+
+  describe ".each" do
+    it "iterates over the created GameObjects in id order" do
+      clear_object_cache
+
+      10.times { UniversalConstant::GameObject.new }
+      i = 0
+
+      UniversalConstant::GameObject.each do |game_object|
+        game_object.id.should == i
+        i += 1
+      end
+    end
+  end
 end

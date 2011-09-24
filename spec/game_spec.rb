@@ -3,6 +3,7 @@ require 'spec_helper'
 describe UniversalConstant::Game do
   describe ".new" do
     before(:all) do
+      clear_object_cache
       10.times { UniversalConstant::Room.new }
     end
 
