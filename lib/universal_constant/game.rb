@@ -22,6 +22,10 @@ module UniversalConstant
       @player.location = room
     end
 
+    def save(path)
+      GameSerializer.new(self, path).serialize
+    end
+
     def start
       catch(:exit_game) do
         $game = self

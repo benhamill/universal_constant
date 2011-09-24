@@ -45,4 +45,14 @@ describe UniversalConstant::Game do
       subject.player.location.should == :work
     end
   end
+
+  describe "#save" do
+    it "makes a new GameSerializer and calls serialize on it" do
+      serializer = double('GameSerializer')
+      UniversalConstant::GameSerializer.should_receive(:new).with(subject, 'some/path/') { serializer }
+      serializer.should_receive(:serialize)
+
+      subject.save('some/path/')
+    end
+  end
 end
