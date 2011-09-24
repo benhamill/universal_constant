@@ -4,7 +4,7 @@ module UniversalConstant
       @room = room
     end
 
-    def to_yaml
+    def serialize
       y = YAML.dump({
         'id' => @room.id,
         'name' => @room.name,
