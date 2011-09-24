@@ -4,11 +4,14 @@ module UniversalConstant
   class Game
     include UI
 
-    attr_reader :player, :starting_location
+    attr_reader :player, :starting_location, :name
 
-    def initialize(starting_location_id = 0)
+    def initialize(options = {})
+      options = default_options.merge!(options.symbolize_keys!)
+
+      @name = options[:name].to_s
       @player = Player.new
-      @starting_location = GameObject.find(starting_location_id)
+      @starting_location = GameObject.find(options[:start_id].to_i)
     end
 
     def player_location
@@ -30,6 +33,15 @@ module UniversalConstant
           response = Commands.process_input(ask)
         end
       end
+    end
+
+    private
+
+    def default_options
+      {
+        :start_id => 0,
+        :name => 'new game',
+      }
     end
   end
 end

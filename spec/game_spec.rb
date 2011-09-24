@@ -2,20 +2,28 @@ require 'spec_helper'
 
 describe UniversalConstant::Game do
   describe ".new" do
+    before(:all) do
+      10.times { UniversalConstant::Room.new }
+    end
+
     it "creates a new Player object" do
       UniversalConstant::Game.new.player.should be_a(UniversalConstant::Player)
     end
 
     it "assigns the starting location to the GameObject with the given id" do
-      10.times { UniversalConstant::Room.new }
-
-      UniversalConstant::Game.new(5).starting_location.should === UniversalConstant::GameObject.find(5)
+      UniversalConstant::Game.new(:start_id => 5).starting_location.should === UniversalConstant::GameObject.find(5)
     end
 
     it "defaults the starting location to the GameObject with id 0" do
-      10.times { UniversalConstant::Room.new }
-
       UniversalConstant::Game.new.starting_location.should === UniversalConstant::GameObject.find(0)
+    end
+
+    it "has a name" do
+      UniversalConstant::Game.new(:name => 'fred').name.should == 'fred'
+    end
+
+    it "defaults the name to 'new game'" do
+      UniversalConstant::Game.new.name.should == 'new game'
     end
   end
 
