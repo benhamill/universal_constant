@@ -12,7 +12,7 @@ describe UniversalConstant::Game do
       UniversalConstant::Game.new(5).starting_location.should === UniversalConstant::GameObject.find(5)
     end
 
-    it "defaults theUniversalConstant::GameObject.find(5)ing location to the GameObject with id 0" do
+    it "defaults the starting location to the GameObject with id 0" do
       10.times { UniversalConstant::Room.new }
 
       UniversalConstant::Game.new.starting_location.should === UniversalConstant::GameObject.find(0)
