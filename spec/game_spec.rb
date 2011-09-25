@@ -26,6 +26,21 @@ describe UniversalConstant::Game do
     it "defaults the name to 'new game'" do
       UniversalConstant::Game.new.name.should == 'new game'
     end
+
+    context "when the started location doesn't exist at init time" do
+      before(:each) do
+        clear_object_cache
+        @game = UniversalConstant::Game.new(:start_id => 0)
+      end
+
+      it "starting location is evaluated lazily" do
+        @game.starting_location.should be_nil
+
+        room = UniversalConstant::Room.new
+
+        @game.starting_location.should === room
+      end
+    end
   end
 
   describe "#player_location" do
