@@ -1,10 +1,10 @@
 module UniversalConstant
   class GameSerializer
-    # half a thought:
-    # def save(path)
-    #   save_root = Pathname.new(path).join(self.name)
+    attr_reader :game, :save_root
 
-    #   FileUtils.mkdir(save_dir)
-    # end
+    def initialize(game, path)
+      @game = game
+      @save_root = File.join(path, @game.name.downcase.gsub(/[^a-z0-9\-_ ]/, '').gsub(/ +/, '_'))
+    end
   end
 end
