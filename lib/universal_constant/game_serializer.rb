@@ -19,5 +19,13 @@ module UniversalConstant
         })
       end
     end
+
+    def write_object_data
+      File.open(File.join(save_root, 'objects'), 'w') do |file|
+        GameObject.each do |go|
+          file.puts go.serialize
+        end
+      end
+    end
   end
 end
