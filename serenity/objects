@@ -1,0 +1,34 @@
+---
+id: 0
+name: Cockpit
+description: The cockpit of Serenity is roughly triangular in floor-plan with two
+  chairs, each at a wide console, sitting at about the half-way mark. On the starboard
+  side is the pilots station and the port is for the navigator. The room is dominated,
+  to forward, by a large wind-shield, divided by structural supports. To the sides
+  and aft, various electronic doodads, mechanical gizmos, pipes and conduits cover
+  the walls. Along a lowered portion of the ceiling running fore-to-aft in the center
+  of the room is an intercom system for the pilot or captain to be able to address
+  the whole ship or any specific console therein.
+exits:
+  aft: 1
+---
+id: 1
+name: Forward Hall
+description: ! 'The foreward hall has a narrow walkway down the center running along
+  the centerline of the ship and sloping ever so slightly downward as it goes aft.
+  The walls, to waist height, slant outward at almost 45 degrees so that there isn''t
+  a cramped feeling, and the ceiling arches up from that point to a height of about
+  10 feet. Forward, there is a gangway leading up to an area with a raised ceiling
+  and a doorway.
+
+
+  Along the walls at regular intervals are panels with ladder rungs in them. These
+  are hinged at the top and may be swung away from the walkway to reveal ladder access
+  below to each of the crew cabins. One such panel has been decorated with Christmas
+  lights and a hand-painted wooden sign that reads "Kaylee''s Room".
+
+
+  Towards the aft end of the hallway is a small flat area with two doors: one leading
+  aft and one starboard.'
+exits:
+  foreward: 0
