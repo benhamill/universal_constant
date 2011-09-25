@@ -7,6 +7,12 @@ module UniversalConstant
       @save_root = File.join(path, @game.name.downcase.gsub(/[^a-z0-9\-_ ]/, '').gsub(/ +/, '_'))
     end
 
+    def serialize
+      create_save_root
+      write_game_data
+      write_object_data
+    end
+
     def create_save_root
       FileUtils.mkdir(save_root)
     end
