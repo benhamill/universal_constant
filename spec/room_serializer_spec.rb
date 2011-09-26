@@ -12,6 +12,7 @@ describe UniversalConstant::RoomSerializer do
   describe "#serialize" do
     it "encodes the room's attributes in yaml" do
       @serializer.serialize.should == YAML.dump({
+        'class' => 'UniversalConstant::Room',
         'id' => @room.id,
         'name' => @room.name,
         'description' => @room.description,

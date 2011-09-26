@@ -6,6 +6,7 @@ module UniversalConstant
 
     def serialize
       y = YAML.dump({
+        'class' => @room.class.name,
         'id' => @room.id,
         'name' => @room.name,
         'description' => @room.description,
